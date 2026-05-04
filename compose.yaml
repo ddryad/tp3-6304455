@@ -19,7 +19,7 @@ services:
       timeout: 5s
       retries: 5
 
-  blogverse-backend:
+  backend:
     image: ddryad/tp2-6304455-blogverse-backend:${BACKEND_VERSION:-latest}
     container_name: blogverse-backend
     restart: unless-stopped
@@ -45,7 +45,7 @@ services:
     networks:
       - cloud
     depends_on:
-      - blogverse-backend
+      - backend
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.blogverse.rule=Host(`blogverse.${MY_DOMAIN}`)'
