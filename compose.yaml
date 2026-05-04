@@ -128,7 +128,7 @@ services:
         - '--entrypoints.websecure.http.tls.domains[0].main=${MY_DOMAIN}'
         - '--entrypoints.websecure.http.tls.domains[0].sans=*.${MY_DOMAIN}'
       volumes:
-        - '../data/traefik/letsencrypt:/letsencrypt'
+        - 'traefik_letsencrypt:/letsencrypt'
         - '/var/run/docker.sock:/var/run/docker.sock:ro'
       labels:
         - 'traefik.enable=true'
@@ -146,6 +146,7 @@ volumes:
     portainer_data:
     jellyfin_data:
     blogverse_db_data:
+    traefik_letsencrypt:
 # Création du réseau cloud (ou les conteneurs vont être lancés)
 networks:
     cloud:
